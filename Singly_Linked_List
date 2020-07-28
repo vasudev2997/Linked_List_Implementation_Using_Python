@@ -8,16 +8,15 @@ class Linkedlist():
 #Head declaration
     def __init__(self):
         self.head=None
-        
+        self.last=None
 #Insert at the end of the list
     def insertend(self, newdata):
-        if(self.length()==0):
+        if(self.last==None):
             self.head=Node(newdata)
+            self.last=self.head
         else:
-            current=self.head
-            while(current):
-                current=current.next
-            current=Node(newdata)
+            self.last.next=Node(newdata)
+            self.last=self.last.next
             
 #Insert in the beginning of the list          
     def insertbeg(self, newdata):
