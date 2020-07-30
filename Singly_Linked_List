@@ -46,12 +46,14 @@ class Linkedlist():
 #Delete node from the list
     def delete(self,position):
         current=self.head
-        if(position<=self.length()):
+        if(position<=self.length() and position>1):
             i=0
             while(current and i<position-2):
                 current=current.next
                 i+=1
             current.next=current.next.next
+        elif(position==1):
+            self.head=self.head.next
         else:
             print("Invalid Entry")
 
