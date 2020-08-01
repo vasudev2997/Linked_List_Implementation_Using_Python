@@ -9,6 +9,7 @@ class Linkedlist():
     def __init__(self):
         self.head=None
         self.last=None
+        
 #Insert at the end of the list
     def insertend(self, newdata):
         if(self.last==None):
@@ -32,12 +33,13 @@ class Linkedlist():
         node=Node(newdata)
         i=0
         current=self.head
-        if(position>1 and position<=self.length()+1):
-            while(current and i<position-2):
-                current=current.next
-                i+=1
-            node.next=current.next
-            current.next=node
+        if(self.head is not None):
+            if(position>1 and position<=self.length()+1):
+                while(current and i<position-2):
+                    current=current.next
+                    i+=1
+                node.next=current.next
+                current.next=node
         elif(position==1):
             self.insertbeg(newdata)
         else:
@@ -55,24 +57,28 @@ class Linkedlist():
         elif(position==1):
             self.head=self.head.next
         else:
-            print("Invalid Entry")
+            print("Invalid Entry or List not Created.")
 
 #Length of List Function
     def length(self):
-        current=self.head
-        l=0
-        while(current):
-            current=current.next
-            l+=1
-        return l
+        if(self.head is not None):
+            current=self.head
+            l=0
+            while(current):
+                current=current.next
+                l+=1
+            return l
         
 #Print Function
     def print(self):
-        current=self.head
-        while current:
-            print(current.data,end=" ")
-            current=current.next
-        print()
+        if(self.head is not None):
+            current=self.head
+            while current:
+                print(current.data,end=" ")
+                current=current.next
+            print()
+        else:
+            print("List is not Created.")
 
 def Operations():
     n=int(input("1. Insert  2. Delete   3. Update   4. Length   5. Print\n"))
