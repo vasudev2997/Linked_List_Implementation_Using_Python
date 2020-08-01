@@ -33,13 +33,12 @@ class Linkedlist():
         node=Node(newdata)
         i=0
         current=self.head
-        if(self.head is not None):
-            if(position>1 and position<=self.length()+1):
-                while(current and i<position-2):
-                    current=current.next
-                    i+=1
-                node.next=current.next
-                current.next=node
+        if(position>1 and position<=self.length()+1):
+            while(current and i<position-2):
+                current=current.next
+                i+=1
+            node.next=current.next
+            current.next=node
         elif(position==1):
             self.insertbeg(newdata)
         else:
@@ -68,6 +67,8 @@ class Linkedlist():
                 current=current.next
                 l+=1
             return l
+        else:
+        return 0
         
 #Print Function
     def print(self):
