@@ -22,16 +22,17 @@ class Linkedlist():
     def insertmid(self, newdata, position):
         node=Node(newdata)
         i=0
-        if(position>1 and position<=self.Length()):
-            current=self.head
-            while i<position-2:
-                current=current.next
-                i+=1
-            node.next=current.next
-            current.next.prev=node
-            node.prev=current
-            current.next=node
-        elif(position==1):
+        if(self.head is not None):
+            if(position>1 and position<=self.Length()):
+                current=self.head
+                while i<position-2:
+                    current=current.next
+                    i+=1
+                node.next=current.next
+                current.next.prev=node
+                node.prev=current
+                current.next=node
+        elif(position==1 and self.Length>1):
             self.insertbeg(newdata)
         elif(position==self.Length()+1):
             self.last.next=node
@@ -58,7 +59,7 @@ class Linkedlist():
                 i+=1
             current.next.prev=current.prev
             current.prev.next=current.next
-        elif(position==1):
+        elif(position==1 and self.Length>1):
             self.head=self.head.next
             self.head.next.prev=None
         elif(position==self.Length()):
@@ -68,26 +69,35 @@ class Linkedlist():
             print("Invalid Entry or List not Created")
 
     def Length(self):
-        l=0
-        current=self.head
-        while current:
-            current=current.next
-            l+=1
-        return l
+        if(self.head is not None):
+            l=0
+            current=self.head
+            while current:
+                current=current.next
+                l+=1
+            return l
+        else:
+            return 0
     
     def printfrombeg(self):
-        current=self.head
-        while(current is not None):
-            print(current.data,end=" ")
-            current=current.next
-        print()
+        if(self.head is not None):
+            current=self.head
+            while(current is not None):
+                print(current.data,end=" ")
+                current=current.next
+            print()
+        else:
+            print("List is not Created.")
             
     def printfromend(self):
-        current=self.last
-        while(current is not None):
-            print(current.data,end=" ")
-            current=current.prev
-        print()
+        if(self.head is not None):    
+            current=self.last
+            while(current is not None):
+                print(current.data,end=" ")
+                current=current.prev
+            print()
+        else:
+            print("List is not Created.")
 
 def Operations():
     n=int(input("1. Insert  2. Delete   3. Update   4. Length   5. Print Form Beginnig  6. Print From End\n"))
