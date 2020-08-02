@@ -68,7 +68,7 @@ class Linkedlist():
                 l+=1
             return l
         else:
-        return 0
+            return 0
         
 #Print Function
     def print(self):
@@ -79,7 +79,7 @@ class Linkedlist():
                 current=current.next
             print()
         else:
-            print("List is not Created.")
+            print("List is not created or empty.")
 
 def Operations():
     n=int(input("1. Insert  2. Delete   3. Update   4. Length   5. Print\n"))
@@ -116,6 +116,7 @@ def Operations():
         print("Invalid Entry")
 
 l1=Linkedlist()
+print("Singly Linked List")
 Operations()
 while(True):
     c=input("Continue Y/N - ")
