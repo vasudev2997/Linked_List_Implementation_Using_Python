@@ -26,40 +26,38 @@ class Linkedlist():
     def insertmid(self, newdata, position):
         node=Node(newdata)
         i=0
-        if(self.head is not None):
-            if(position>1 and position<=self.Length()):
-                current=self.head
-                while i<position-2:
-                    current=current.next
-                    i+=1
-                node.next=current.next
-                current.next.prev=node
-                node.prev=current
-                current.next=node
+        if(1 < position <= self.Length()):
+            current=self.head
+            while i<position-2:
+                current=current.next
+                i+=1
+            node.next=current.next
+            current.next.prev=node
+            node.prev=current
+            current.next=node
         elif(position==1):
             self.insertbeg(newdata)
         elif(position==self.Length()+1):
-            self.last.next=node
-            node.prev=self.last
-            self.last=node
+            self.insertend(newdata)
         else:
             print("Invalid Entry or List not Created")
 
 #Insertend function for the insertion of node at the end of the list
     def insertend(self, newdata):
-        if(self.last==None):
-            self.head=Node(newdata)
+        node=Node(newdata)
+        if(self.last is None):
+            self.head=node
             self.last=self.head
         else:
-            self.last.next=Node(newdata)
-            self.last.next.prev=self.last
-            self.last=self.last.next
+            node.prev=self.last
+            self.last.next=node
+            self.last=node
 
 #Delete function for the deletion of the specified node
     def delete(self, position):
         current=self.head
         i=0
-        if(position<self.Length() and position>1):
+        if(1 < position < self.Length()):
             while current and i<position-1:
                 current=current.next
                 i+=1
@@ -78,7 +76,7 @@ class Linkedlist():
 
 #Length function which returns ths length of the list
     def Length(self):
-        if(self.head is not None):
+        if(self.head):
             l=0
             current=self.head
             while current:
@@ -90,9 +88,9 @@ class Linkedlist():
 
 #Print function for printing the node's data from the beginning of the list
     def printfrombeg(self):
-        if(self.head is not None):
+        if(self.head):
             current=self.head
-            while(current is not None):
+            while current:
                 print(current.data,end=" ")
                 current=current.next
             print()
@@ -101,9 +99,9 @@ class Linkedlist():
 
 #Print function for printing the node's data from the end of the list
     def printfromend(self):
-        if(self.head is not None):    
+        if(self.head):    
             current=self.last
-            while(current is not None):
+            while current:
                 print(current.data,end=" ")
                 current=current.prev
             print()
